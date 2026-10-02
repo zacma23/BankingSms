@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Shield Outer -->
+    <path
+        android:fillColor="#00ADEF"
+        android:pathData="M54,26 L78,35 C78,57 66,74 54,82 C42,74 30,57 30,35 Z" />
+    <!-- Shield Inner -->
+    <path
+        android:fillColor="#0B1E36"
+        android:pathData="M54,31 L73,38 C73,55 64,69 54,76 C44,69 35,55 35,38 Z" />
+    <!-- Golden Center Circle -->
+    <path
+        android:fillColor="#FFD700"
+        android:pathData="M54,43 C59.52,43 64,47.48 64,53 C64,58.52 59.52,63 54,63 C48.48,63 44,58.52 44,53 C44,47.48 48.48,43 54,43 Z" />
+    <!-- Arrow -->
+    <path
+        android:fillColor="#0B1E36"
+        android:pathData="M54,47 L60,53 L56,53 L56,59 L52,59 L52,53 L48,53 Z" />
+</vector>

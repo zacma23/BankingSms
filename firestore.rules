@@ -1,0 +1,52 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isValidUserProfile(data) {
+      return data.size() >= 2 &&
+             data.userId is string &&
+             data.userId == request.auth.uid &&
+             data.defaultCurrency is string &&
+             (!('email' in data) || data.email is string) &&
+             (!('displayName' in data) || data.displayName is string);
+    }
+
+    function isValidTransaction(data, userId) {
+      return data.size() >= 6 &&
+             data.userId == userId &&
+             data.provider is string &&
+             data.amount is number &&
+             data.transactionType is string &&
+             data.category is string &&
+             data.currency is string &&
+             (!('sender' in data) || data.sender is string) &&
+             (!('receiver' in data) || data.receiver is string) &&
+             (!('referenceNumber' in data) || data.referenceNumber is string) &&
+             (!('description' in data) || data.description is string) &&
+             (!('balanceAfterTransaction' in data) || data.balanceAfterTransaction is number) &&
+             (!('rawMessage' in data) || data.rawMessage is string);
+    }
+
+    match /users/{userId} {
+      allow read: if isOwner(userId);
+      allow create: if isOwner(userId) && isValidUserProfile(request.resource.data);
+      allow update: if isOwner(userId) && isValidUserProfile(request.resource.data);
+      allow delete: if isOwner(userId);
+
+      match /transactions/{transactionId} {
+        allow read: if isOwner(userId);
+        allow create: if isOwner(userId) && isValidTransaction(request.resource.data, userId);
+        allow update: if isOwner(userId) && isValidTransaction(request.resource.data, userId);
+        allow delete: if isOwner(userId);
+      }
+    }
+  }
+}

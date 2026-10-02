@@ -1,0 +1,6 @@
+{
+  "name": "FinEthio SMS Tracker",
+  "description": "Smart Ethiopian bank and mobile-money SMS transaction tracker for Telebirr, CBE, Awash Bank, and more with financial dashboard, Room database, and AI assistant.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

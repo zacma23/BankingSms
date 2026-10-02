@@ -1,0 +1,43 @@
+{
+  "entities": {
+    "UserProfile": {
+      "collection": "users",
+      "path": "/users/{userId}",
+      "fields": {
+        "userId": { "type": "string", "required": true },
+        "email": { "type": "string", "required": false },
+        "displayName": { "type": "string", "required": false },
+        "defaultCurrency": { "type": "string", "required": true },
+        "createdAt": { "type": "timestamp", "required": false },
+        "updatedAt": { "type": "timestamp", "required": false }
+      }
+    },
+    "Transaction": {
+      "collection": "transactions",
+      "path": "/users/{userId}/transactions/{transactionId}",
+      "fields": {
+        "id": { "type": "string", "required": true },
+        "userId": { "type": "string", "required": true },
+        "provider": { "type": "string", "required": true },
+        "account": { "type": "string", "required": true },
+        "transactionType": { "type": "string", "required": true },
+        "category": { "type": "string", "required": true },
+        "amount": { "type": "number", "required": true },
+        "currency": { "type": "string", "required": true },
+        "sender": { "type": "string", "required": false },
+        "receiver": { "type": "string", "required": false },
+        "referenceNumber": { "type": "string", "required": false },
+        "description": { "type": "string", "required": false },
+        "transactionDate": { "type": "string", "required": true },
+        "transactionTime": { "type": "string", "required": true },
+        "balanceAfterTransaction": { "type": "number", "required": false },
+        "rawMessage": { "type": "string", "required": false },
+        "source": { "type": "string", "required": true },
+        "isVerified": { "type": "boolean", "required": true },
+        "timestamp": { "type": "number", "required": true },
+        "createdAt": { "type": "timestamp", "required": false },
+        "updatedAt": { "type": "timestamp", "required": false }
+      }
+    }
+  }
+}
